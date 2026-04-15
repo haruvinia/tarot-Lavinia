@@ -32,6 +32,6 @@ function reset() {
     p.classList.remove("active", "blur");
   });
 
-  centerText.innerText = "Você é a melhor parte da minha vida ❤️";
+  centerText.innerText = "Te amo, Kauã! ❤️";
   activePhoto = null;
 }
