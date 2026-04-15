@@ -1,78 +1,105 @@
+/* RESET */
 body {
-    margin: 0;
-    height: 100vh;
-    background: #f4efe6;
-    font-family: 'Georgia', serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  margin: 0;
+  height: 100vh;
+  background: #f3e4d7;
+  font-family: 'Playfair Display', serif;
+  position: relative;
 }
 
-#upload {
-    margin-bottom: 20px;
+/* textura */
+body::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url("https://www.transparenttextures.com/patterns/aged-paper.png");
+  opacity: 0.4;
+  z-index: -1;
 }
 
+/* CONTAINER CENTRAL REAL */
 .container {
-    position: relative;
-    width: 600px;
-    height: 600px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1100px;
+  height: 1100px;
 }
 
-/* Texto central */
+/* círculo */
+.circle {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+/* fotos */
+.photo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: 
+    rotate(calc(36deg * var(--i)))
+    translate(var(--r))
+    rotate(calc(-36deg * var(--i)));
+  transition: all 0.6s ease;
+  cursor: pointer;
+  z-index: 1;
+}
+
+/* post-it */
+.postit {
+  background: #fff8dc;
+  padding: 12px;
+  padding-bottom: 30px;
+  border-radius: 6px;
+  border: 1px solid #d6c1a3;
+  box-shadow: 4px 6px 14px rgba(0,0,0,0.25);
+  transform: rotate(var(--rot));
+}
+
+.postit img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  filter: sepia(40%) contrast(90%);
+}
+
+.postit p {
+  margin: 10px 0 0;
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  color: #5a3e42;
+}
+
+/* TEXTO CENTRAL (fixado corretamente) */
 .center-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 22px;
-    text-align: center;
-    color: #6b4f4f;
-    width: 200px;
+  position: absolute;
+  top: 60%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  color: #6b4c4c;
+  padding: 25px;
+  border-radius: 14px;
+  line-height: 1.3;
 }
 
-/* Animação */
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
+/* ativo */
+.photo.active {
+  transform: translate(-50%, -50%) scale(1.6);
+  z-index: 20;
 }
 
-/* Post-its */
-.post-it {
-    position: absolute;
-    width: 140px;
-    padding: 10px;
-    background: #fff8b0;
-    box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
-    text-align: center;
-    border-radius: 6px;
-
-    transform: rotate(calc(var(--i) * 36deg))
-               translate(220px)
-               rotate(calc(var(--i) * -36deg));
-
-    animation: float 3s ease-in-out infinite;
-    animation-delay: calc(var(--i) * 0.2s);
-}
-
-.post-it:nth-child(odd) {
-    background: #ffd6d6;
-}
-
-.post-it:nth-child(even) {
-    background: #d6f0ff;
-}
-
-.post-it img {
-    width: 100%;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 4px;
-}
-
-.post-it p {
-    margin-top: 8px;
-    font-size: 14px;
-    color: #444;
+.photo.blur {
+  opacity: 0.2;
 }

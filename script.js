@@ -1,16 +1,37 @@
-const uploadInput = document.getElementById("upload");
-const postIts = document.querySelectorAll(".post-it img");
+const photos = document.querySelectorAll(".photo");
+const centerText = document.getElementById("centerText");
 
-uploadInput.addEventListener("change", (event) => {
-    const files = Array.from(event.target.files);
+let activePhoto = null;
 
-    files.slice(0, 10).forEach((file, index) => {
-        const reader = new FileReader();
+photos.forEach(photo => {
+  photo.addEventListener("click", (e) => {
+    e.stopPropagation();
 
-        reader.onload = (e) => {
-            postIts[index].src = e.target.result;
-        };
+    if (activePhoto === photo) {
+      reset();
+      return;
+    }
 
-        reader.readAsDataURL(file);
+    reset();
+
+    photo.classList.add("active");
+    activePhoto = photo;
+
+    photos.forEach(p => {
+      if (p !== photo) p.classList.add("blur");
     });
+
+    centerText.innerText = photo.querySelector("p").innerText;
+  });
 });
+
+document.addEventListener("click", reset);
+
+function reset() {
+  photos.forEach(p => {
+    p.classList.remove("active", "blur");
+  });
+
+  centerText.innerText = "Você é a melhor parte da minha vida ❤️";
+  activePhoto = null;
+}
