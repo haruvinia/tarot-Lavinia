@@ -1,4 +1,3 @@
-/* RESET */
 body {
   margin: 0;
   height: 100vh;
@@ -7,7 +6,6 @@ body {
   position: relative;
 }
 
-/* textura */
 body::before {
   content: "";
   position: absolute;
@@ -18,7 +16,6 @@ body::before {
   z-index: -1;
 }
 
-/* CONTAINER CENTRAL REAL */
 .container {
   position: absolute;
   top: 50%;
@@ -28,14 +25,12 @@ body::before {
   height: 1100px;
 }
 
-/* círculo */
 .circle {
   position: absolute;
   width: 100%;
   height: 100%;
 }
 
-/* fotos */
 .photo {
   position: absolute;
   top: 50%;
@@ -49,7 +44,6 @@ body::before {
   z-index: 1;
 }
 
-/* post-it */
 .postit {
   background: #fff8dc;
   padding: 12px;
@@ -75,7 +69,6 @@ body::before {
   color: #5a3e42;
 }
 
-/* TEXTO CENTRAL (fixado corretamente) */
 .center-text {
   position: absolute;
   top: 60%;
@@ -94,7 +87,6 @@ body::before {
   line-height: 1.3;
 }
 
-/* ativo */
 .photo.active {
   transform: translate(-50%, -50%) scale(1.6);
   z-index: 20;
